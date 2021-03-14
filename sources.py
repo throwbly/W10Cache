@@ -75,3 +75,6 @@ reg = {
         '{3dfdf296-dbec-4fb4-81d1-6a3438bcf4de}'
     ]
 }
+
+removeReg = f"powershell Remove-Item -Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\"
+restoreReg = f"powershell New-Item -Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\"

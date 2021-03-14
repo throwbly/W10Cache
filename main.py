@@ -1,6 +1,8 @@
 from os import system
 from sources import reg
 
+
+
 def winmenu():
     from sources import ls
     for key in ls:
@@ -44,15 +46,13 @@ def FileExplorer():
         test = int(input("1. Desktop\n2. Documents\n3. Video\n4. Pictures\n5. Downloads\n6. Music"))
 
         if test == 1:
+            from sources import removeReg
             for path in reg['Desktop']:
-                removeReg = f"powershell Remove-Item -Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\{path}' -Force -Verbose"
-                system(f'cmd /c "{removeReg}"')
+                system(f"""cmd /c "{removeReg + path}' -Force -Verbose" """)
             FileExplorer()
-
         elif test == 2:
             for path in reg['Documents']:
-                removeReg = f"powershell Remove-Item -Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\{path}' -Force -Verbose"
-                system(f'cmd /c "{removeReg}"')
+                system(f"""cmd /c "{removeReg + path}' -Force -Verbose" """)
             FileExplorer()
 
         elif test == 3:
@@ -85,9 +85,9 @@ def FileExplorer():
         test = int(input("1. Desktop\n2. Documents\n3. Video\n4. Pictures\n5. Downloads\n6. Music"))
 
         if test == 1:
+            from sources import restoreReg
             for path in reg['Desktop']:
-                regpath = f"powershell New-Item -Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\{path}'"
-                system(f'cmd /c "{regpath}"')
+                system(f"""cmd /c "{restoreReg + path}' """)
             FileExplorer()
 
         elif test == 2:
